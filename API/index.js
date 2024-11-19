@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -7,6 +8,9 @@ const PORT = process.env.PORT || 3000;
 // Đặt API Key của OpenWeatherMap
 const API_KEY = 'ce821ca4524b5b6a13424f936a79f23d'; // Thay 'YOUR_API_KEY' bằng API Key của bạn
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
+
+// Sử dụng CORS cho tất cả các route
+app.use(cors()); // Cấu hình cho phép tất cả các nguồn (origins)
 
 app.get('/weather', async (req, res) => {
     const { city } = req.query; // Lấy tên thành phố từ query parameter
